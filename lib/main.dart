@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutterprojects/my_stateful_wiedget.dart';
-import 'package:flutterprojects/page_ansewr/answer_portal.dart';
-import 'package:flutterprojects/page_ansewr/answer1.dart';
-import 'package:flutterprojects/page_ansewr/answer2.dart';
-import 'package:flutterprojects/page_ansewr/answer3.dart';
-import 'package:flutterprojects/page_ansewr/answer4.dart';
+// import 'package:flutterprojects/my_stateful_wiedget.dart';
+// import 'package:flutterprojects/page_ansewr/answer_portal.dart';
+// import 'package:flutterprojects/page_ansewr/answer1.dart';
+// import 'package:flutterprojects/page_ansewr/answer2.dart';
+// import 'package:flutterprojects/page_ansewr/answer3.dart';
+// import 'package:flutterprojects/page_ansewr/answer4.dart';
+import 'package:flutterprojects/form_simple.dart';
+import 'package:flutterprojects/page_ansewr/registrationform.dart';
+import 'package:flutterprojects/page_ansewr/simple_api_call.dart';
+import 'package:flutterprojects/page_ansewr/air_quality.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,28 +26,28 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomePage(),
+      home: AirQualityApp(),
     );
   }
 }
 
-class GreetingWidget extends StatelessWidget {
-  final String name;
-const GreetingWidget({super.key, required this.name});
+// class GreetingWidget extends StatelessWidget {
+//   final String name;
+// const GreetingWidget({super.key, required this.name});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Demo APP"),
-        backgroundColor: Colors.orange,
-        centerTitle: true, // ทำให้ไตเติ้ลอยู่ตรงกลาง
-        ),
-      body: Center(child: Text('Hello, $name'),),
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text("Demo APP"),
+//         backgroundColor: Colors.orange,
+//         centerTitle: true, // ทำให้ไตเติ้ลอยู่ตรงกลาง
+//         ),
+//       body: Center(child: Text('Hello, $name'),),
 
-    );
-  }
-}
+//     );
+//   }
+// }
 
 
 
