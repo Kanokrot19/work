@@ -5,10 +5,17 @@ import 'package:flutter/material.dart';
 // import 'package:flutterprojects/page_ansewr/answer2.dart';
 // import 'package:flutterprojects/page_ansewr/answer3.dart';
 // import 'package:flutterprojects/page_ansewr/answer4.dart';
-import 'package:flutterprojects/form_simple.dart';
-import 'package:flutterprojects/page_ansewr/registrationform.dart';
-import 'package:flutterprojects/page_ansewr/simple_api_call.dart';
-import 'package:flutterprojects/page_ansewr/air_quality.dart';
+//import 'package:flutterprojects/form_simple.dart';
+//import 'package:flutterprojects/page_ansewr/registrationform.dart';
+//import 'package:flutterprojects/page_ansewr/simple_api_call.dart';
+//import 'package:flutterprojects/page_ansewr/air_quality.dart';
+import 'package:flutterprojects/page_ansewr/api_product.dart';
+import 'package:flutterprojects/model/product_data.dart';
+import 'package:flutterprojects/page_ansewr/edit_product.dart';
+import 'package:flutterprojects/page_ansewr/add_product.dart';
+import 'package:flutterprojects/page_ansewr/product_screen.dart';
+import 'package:flutter/material.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -17,18 +24,58 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
-  @override
+   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'SU Mobile',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
       ),
-      home: AirQualityApp(),
+      initialRoute: '/',
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case '/':
+            return MaterialPageRoute(builder: (_) => WS_Product());
+          case '/add_product':
+            return MaterialPageRoute(builder: (_) => AddProduct());
+          case '/edit_product':
+            final product = settings.arguments as Products?;
+            if (product != null) {
+              return MaterialPageRoute(
+                builder: (_) => EditProduct(product: product),
+              );
+            }
+            return _errorRoute();
+          default:
+            return _errorRoute();
+        }
+      },
     );
   }
+
+  Route<dynamic> _errorRoute() {
+    return MaterialPageRoute(
+      builder:
+          (_) => Scaffold(
+            appBar: AppBar(title: const Text('Error')),
+            body: const Center(child: Text('Route not found!')),
+          ),
+    );
+  }
+
+ 
+  // This widget is the root of your application.
+//  @override
+//  Widget build(BuildContext context) {
+//    return MaterialApp(
+//      title: 'Flutter Demo',
+//      theme: ThemeData(
+//        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+//        useMaterial3: true,
+//      ),
+//      home: WS_Product(),
+//    );
+//  }
 }
 
 // class GreetingWidget extends StatelessWidget {
@@ -48,21 +95,6 @@ class MyApp extends StatelessWidget {
 //     );
 //   }
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
